@@ -27,9 +27,9 @@ nearestbyday(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarname,
 
 \item{knearest}{number of nearest neighbors to check for non-missing data}
 
-\item{maxdistance}{(optional) constraint on distance}
+\item{maxdistance}{(optional) constraint on distance, in the units of the points matrix}
 
-\item{nearestmean}{(optional) compute mean of knearest values within maxdistance?}
+\item{nearestmean}{(optional) also compute mean of knearest values within maxdistance?}
 
 \item{verbose}{print output of the intermediate data.table size and fields}
 }
