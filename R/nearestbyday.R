@@ -12,8 +12,8 @@
 #' @param joinprefix string to use as name for new variables
 #' @param valuefield column name with field to be merged in
 #' @param knearest number of nearest neighbors to check for non-missing data
-#' @param maxdistance (optional) constraint on distance
-#' @param nearestmean (optional) compute mean of knearest values within maxdistance?
+#' @param maxdistance (optional) constraint on distance, in the units of the points matrix
+#' @param nearestmean (optional) also compute mean of knearest values within maxdistance?
 #' @param verbose print output of the intermediate data.table size and fields
 #' @return A data.table, akin to a semi_join on nearest neighbor and day.
 #' @examples
