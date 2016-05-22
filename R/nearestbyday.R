@@ -6,11 +6,19 @@ nearestbyday <- function(matrix1, matrix2, dt1, dt2, dt1varname, dt2varname,
                          knearest = 5, maxdistance = NA, nearestmean = FALSE){
   require(FNN)
   require(data.table)
-  # to add: 
+  ## to add: 
+  # 0.0 create a simple test of the function
+  # 0.05 consistent naming of variables to "jointo" and "joinfrom"
+  # 0.1 bring call to makepointsmatrix in to the function (currently done ahead of time)
+  # 0.2 easier spatial-only merge as an option
+  # 0.3 change closestname to "joinprefix"
   # 1. check consistency of arguments (class of inputs, day is a date, etc)
   # 2. check that dt1varname is in dt1 and dt2varname is in dt2
   # 3. check that dt2 covers all of the needed days - otherwise error with cartesian join
-  # 4. add flexibility on day (name of variable - but add check on class across dt1 and dt2)
+  # 4. add flexibility on "day" (name of variable - but add check on class across dt1 and dt2)
+  # 4.1 add parameter "datename" instead of assuming it is called day
+  # 5. add flag to exclude closest point in calculating mean (for generating a second feature)
+
   knearest <- min(knearest, nrow(matrix2))
   knnname <- paste0(closestname, "knn")
   # calculate nearest neighbors using package FNN
