@@ -4,28 +4,34 @@
 \alias{nearestbyday}
 \title{Merge two point datasets by day.}
 \usage{
-nearestbyday(matrix1, matrix2, dt1, dt2, dt1varname, dt2varname,
-  joinprefix = "closest", varstoget = "avewsp", knearest = 5,
-  maxdistance = NA, nearestmean = FALSE)
+nearestbyday(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarname,
+  joinfromvarname, joinprefix = "closest", valuefield = "avewsp",
+  knearest = 5, maxdistance = NA, nearestmean = FALSE, verbose = F)
 }
 \arguments{
-\item{matrix1}{}
+\item{jointo.pts}{points matrix output from \code{\link{makepointsmatrix}}}
 
-\item{matrix2, }{}
+\item{joinfrom.pts}{points matrix output from \code{\link{makepointsmatrix}}}
 
-\item{dt1, }{}
+\item{jointo}{data.table target}
 
-\item{dt2, }{}
+\item{joinfrom}{data.table data source}
 
-\item{dt1varname}{}
+\item{jointovarname}{column name for unique field for points in jointo}
+
+\item{joinfromvarname}{column name for unique field for points in joinfrom}
 
 \item{joinprefix}{string to use as name for new variables}
+
+\item{valuefield}{column name with field to be merged in}
 
 \item{knearest}{number of nearest neighbors to check for non-missing data}
 
 \item{maxdistance}{(optional) constraint on distance}
 
 \item{nearestmean}{(optional) compute mean of knearest values within maxdistance?}
+
+\item{verbose}{print output of the intermediate data.table size and fields}
 }
 \value{
 A data.table, akin to a semi_join on nearest neighbor and day.
@@ -47,10 +53,12 @@ jointo.pt <- makepointsmatrix(datatable = jointo,
                              xvar = "x", yvar = "y", idvar = "siteidx") 
 joinfrom.pt <- makepointsmatrix(datatable = joinfrom, 
                                xvar = "x", yvar = "y", idvar = "siteidy") 
-joinout <- nearestbyday(matrix1 = jointo.pt, matrix2 = joinfrom.pt, 
-                       dt1 = jointo, dt2 = joinfrom, 
-                       dt1varname = "siteidx", dt2varname = "siteidy", 
-                       joinprefix = "nearest", varstoget = "value", 
-                       knearest = 3, maxdistance = 2, nearestmean = TRUE)
+joinout <- nearestbyday(jointo.pts = jointo.pt, joinfrom.pts = joinfrom.pt, 
+                       jointo = jointo, joinfrom = joinfrom, 
+                       jointovarname = "siteidx", joinfromvarname = "siteidy", 
+                       joinprefix = "nearest", valuefield = "value", 
+                       knearest = 3, maxdistance = 2, 
+                       nearestmean = TRUE, verbose = T)
+joinout                        
 }
 

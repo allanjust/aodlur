@@ -9,11 +9,12 @@ makepointsmatrix(datatable, xvar, yvar, idvar)
 \arguments{
 \item{datatable}{a data.table}
 
-\item{xvar}{}
+\item{xvar}{column name for x-coordinate}
 
-\item{yvar}{}
+\item{yvar}{column name for y-coordinate}
 
-\item{idvar}{currently better to use character (gets stored as row.names)}
+\item{idvar}{column name for unique key; currently better to use 
+character (gets stored as row.names)}
 }
 \value{
 a matrix of unique x, y pairs with rownames

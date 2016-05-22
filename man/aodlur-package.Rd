@@ -3,12 +3,10 @@
 \alias{aodlur}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+Tools to assist in land use regression with AOD
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+Tools to assist in cleaning AOD data and fitting hybrid satellite-land use regression models
 }
 \details{
 \tabular{ll}{

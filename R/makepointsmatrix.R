@@ -1,9 +1,10 @@
 #' Construct points matrix.
 #'
 #' @param datatable a data.table
-#' @param xvar 
-#' @param yvar 
-#' @param idvar currently better to use character (gets stored as row.names)
+#' @param xvar column name for x-coordinate
+#' @param yvar column name for y-coordinate
+#' @param idvar column name for unique key; currently better to use 
+#' character (gets stored as row.names)
 #'
 #' @return a matrix of unique x, y pairs with rownames
 #' @export 
