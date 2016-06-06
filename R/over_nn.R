@@ -6,6 +6,9 @@ over_nn = function(jointo.pts, joinfrom.pts) {
   stopifnot(class(jointo.pts) %in% c("SpatialPoints", "SpatialPointsDataFrame"))
   stopifnot(class(joinfrom.pts) %in% c("SpatialPoints", "SpatialPointsDataFrame"))
   
+  # Objects need to be in the same CRS
+  stopifnot(identicalCRS(jointo.pts, joinfrom.pts))
+  
   # Pairwise distance matrix
   dist_matrix = spDists(jointo.pts, joinfrom.pts)
   
@@ -19,14 +22,28 @@ over_nn = function(jointo.pts, joinfrom.pts) {
 
 # Example:
 
+# devtools::install_github("allanjust/aodlur")
+
 # library(aodlur)
 # library(sp)
 # 
-# data(cities)
-# data(county)
+# Data from MODIS and Calipso satellites
+# data(mod)
+# data(cal)
 # 
-# over_nn(jointo.pts = cities, joinfrom.pts = county)
+# Subset a single day
+# cal_sub = cal[cal$date == "2006-07-15", ]
+# mod_sub = mod[mod$date == "2006-07-15", ]
+# head(cal_sub@data)
 # 
-# cities@data = cbind(cities@data, over_nn(cities, county))
-# cities@data
+# For each Calipso measurement, find nearest MODIS measurement
+# cal_over_mod = 
+#   over_nn(
+#     jointo.pts = cal_sub, 
+#     joinfrom.pts = mod_sub
+#   )
+# 
+# Join matching MODIS measurements to the attribute table of Calipso
+# cal_sub@data = cbind(cal_sub@data, cal_over_mod)
+# head(cal_sub@data)
 
