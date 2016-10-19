@@ -4,7 +4,8 @@
 \alias{modelfit}
 \title{Summarize linear model fit.}
 \usage{
-modelfit(dataframe, yvar = "mean_pm25", xvar = "aod47")
+modelfit(dataframe, yvar = "pm", xvar = "aod47", digits = 2,
+  verbose = TRUE)
 }
 \arguments{
 \item{dataframe}{a data.frame}
@@ -12,11 +13,19 @@ modelfit(dataframe, yvar = "mean_pm25", xvar = "aod47")
 \item{yvar}{character vector of the column name for outcome}
 
 \item{xvar}{character vector of the column name(s) for predictor(s)}
+
+\item{digits}{integer number of digits to print}
+
+\item{verbose}{logical whether to print summary}
 }
 \value{
 a data.frame of the r-squared and the rmse for the linear regression
 }
 \description{
 Summarize linear model fit.
+}
+\examples{
+test <- data.frame(x = 1:100, y = 1:100 + rnorm(100))
+modelfit(test, yvar = "y", xvar = "x")
 }
 
