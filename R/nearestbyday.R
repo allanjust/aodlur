@@ -16,6 +16,8 @@
 #' @param nearestmean (optional) also compute mean of knearest values within maxdistance?
 #' @param verbose print output of the intermediate data.table size and fields
 #' @return A data.table, akin to a semi_join on nearest neighbor and day.
+#' @import data.table
+#' @importFrom FNN get.knnx
 #' @examples
 #'jointo <- data.table(x = 1:5, y = 1:5, siteidx = 1:5,
 #'                     day = as.Date("2004-04-01"))
