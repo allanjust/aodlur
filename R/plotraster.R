@@ -61,18 +61,36 @@ plotraster <- function(DT, basegrid, rowvar = "hdfrow", colvar = "hdfcol",
   values(myraster) <- unlist(dt[, zvar, with = FALSE]) # am I inserting them in the right way?
   myrasterdt <- data.table(rasterToPoints(myraster))
   # let's plot the map
-  ggmap(backgroundmap, extent = "normal", darken = c(alpha.white.backg, "white"), maprange = TRUE) +
-    geom_raster(aes(x, y, fill = layer),
-                alpha = 0.5,
-                data = myrasterdt) +
-    coord_cartesian() +
-    coord_fixed(aspratio) +
-    scale_fill_gradientn(zvar, colours = topo.colors(225)) +
-    guides(fill = guide_colorbar(barheight = 15)) + 
-    theme_bw(18) + theme(axis.line = element_blank(), 
-                         axis.text = element_blank(), 
-                         axis.ticks = element_blank(), 
-                         axis.title = element_blank(),
-                         panel.border = element_blank(), 
-                         panel.grid = element_blank()) 
+  if(dim(myrasterdt)[1] <= 4) {
+    ggmap(backgroundmap, extent = "normal", darken = c(alpha.white.backg, "white"), maprange = TRUE) +
+      geom_point(aes(x, y, fill = layer),
+                  alpha = 0.5, shape = 15,
+                  data = myrasterdt) +
+      coord_cartesian() +
+      coord_fixed(aspratio) +
+      scale_fill_gradientn(zvar, colours = topo.colors(225)) +
+      guides(fill = guide_colorbar(barheight = 15)) + 
+      theme_bw(18) + theme(axis.line = element_blank(), 
+                           axis.text = element_blank(), 
+                           axis.ticks = element_blank(), 
+                           axis.title = element_blank(),
+                           panel.border = element_blank(), 
+                           panel.grid = element_blank()) 
+    
+  } else {
+    ggmap(backgroundmap, extent = "normal", darken = c(alpha.white.backg, "white"), maprange = TRUE) +
+      geom_raster(aes(x, y, fill = layer),
+                  alpha = 0.5,
+                  data = myrasterdt) +
+      coord_cartesian() +
+      coord_fixed(aspratio) +
+      scale_fill_gradientn(zvar, colours = topo.colors(225)) +
+      guides(fill = guide_colorbar(barheight = 15)) + 
+      theme_bw(18) + theme(axis.line = element_blank(), 
+                           axis.text = element_blank(), 
+                           axis.ticks = element_blank(), 
+                           axis.title = element_blank(),
+                           panel.border = element_blank(), 
+                           panel.grid = element_blank()) 
+  }
 }
