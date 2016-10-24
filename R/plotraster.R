@@ -63,12 +63,12 @@ plotraster <- function(DT, basegrid, rowvar = "hdfrow", colvar = "hdfcol",
   # let's plot the map
   if(dim(myrasterdt)[1] <= 4) {
     ggmap(backgroundmap, extent = "normal", darken = c(alpha.white.backg, "white"), maprange = TRUE) +
-      geom_point(aes(x, y, fill = layer),
+      geom_point(aes(x, y, col = layer),
                   alpha = 0.5, shape = 15,
                   data = myrasterdt) +
       coord_cartesian() +
       coord_fixed(aspratio) +
-      scale_fill_gradientn(zvar, colours = topo.colors(225)) +
+      scale_colour_gradientn(zvar, colours = topo.colors(225)) +
       guides(fill = guide_colorbar(barheight = 15)) + 
       theme_bw(18) + theme(axis.line = element_blank(), 
                            axis.text = element_blank(), 
