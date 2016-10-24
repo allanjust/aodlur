@@ -6,7 +6,7 @@
 \usage{
 nearestbyday(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarname,
   joinfromvarname, joinprefix = "closest", valuefield = "avewsp",
-  knearest = 5, maxdistance = NA, nearestmean = FALSE, verbose = F)
+  knearest = 5, maxdistance = NA, nearestmean = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{jointo.pts}{points matrix output from \code{\link{makepointsmatrix}}}
@@ -58,7 +58,7 @@ joinout <- nearestbyday(jointo.pts = jointo.pt, joinfrom.pts = joinfrom.pt,
                        jointovarname = "siteidx", joinfromvarname = "siteidy", 
                        joinprefix = "nearest", valuefield = "value", 
                        knearest = 3, maxdistance = 2, 
-                       nearestmean = TRUE, verbose = T)
+                       nearestmean = TRUE, verbose = TRUE)
 joinout                        
 }
 

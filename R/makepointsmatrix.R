@@ -6,7 +6,7 @@
 #' @param idvar column name for unique key; currently better to use 
 #' character (gets stored as row.names)
 #'
-#' @return a matrix of unique x, y pairs with rownames
+#' @return a matrix of unique x, y pairs with rownames.
 #' @export 
 makepointsmatrix <- function(datatable, xvar, yvar, idvar) {
   dtnames <- names(datatable)

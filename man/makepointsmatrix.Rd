@@ -17,7 +17,7 @@ makepointsmatrix(datatable, xvar, yvar, idvar)
 character (gets stored as row.names)}
 }
 \value{
-a matrix of unique x, y pairs with rownames
+a matrix of unique x, y pairs with rownames.
 }
 \description{
 Construct points matrix.

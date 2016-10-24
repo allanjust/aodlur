@@ -4,19 +4,18 @@
 \alias{modelfit}
 \title{Summarize linear model fit.}
 \usage{
-modelfit(dataframe, yvar = "pm", xvar = "aod47", digits = 2,
-  verbose = TRUE)
+modelfit(DF, yvar = "pm", xvar = "aod47", verbose = TRUE, digits = 2)
 }
 \arguments{
-\item{dataframe}{a data.frame}
+\item{DF}{a data.frame}
 
 \item{yvar}{character vector of the column name for outcome}
 
 \item{xvar}{character vector of the column name(s) for predictor(s)}
 
-\item{digits}{integer number of digits to print}
-
 \item{verbose}{logical whether to print summary}
+
+\item{digits}{integer number of digits to print (if verbose is equal to FALSE, this parameter is not considered)}
 }
 \value{
 a data.frame of the r-squared and the rmse for the linear regression

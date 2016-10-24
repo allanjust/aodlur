@@ -8,9 +8,12 @@ Authors@R: c(
     person("Margherita", "De Carli", email = "margherita.decarli@mssm.edu", role = "aut"))
 Depends:
     FNN,
-    data.table
+    data.table,
+    ggmap,
+    raster
 Imports:
     broom
 Description: Tools for cleaning and fitting hybrid satellite-land use regression models.
+LazyData: true
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1

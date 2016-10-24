@@ -15,6 +15,7 @@
 #' @param maxdistance (optional) constraint on distance, in the units of the points matrix
 #' @param nearestmean (optional) also compute mean of knearest values within maxdistance?
 #' @param verbose print output of the intermediate data.table size and fields
+#' 
 #' @return A data.table, akin to a semi_join on nearest neighbor and day.
 #' @import data.table
 #' @importFrom FNN get.knnx
@@ -36,12 +37,12 @@
 #'                        jointovarname = "siteidx", joinfromvarname = "siteidy", 
 #'                        joinprefix = "nearest", valuefield = "value", 
 #'                        knearest = 3, maxdistance = 2, 
-#'                        nearestmean = TRUE, verbose = T)
+#'                        nearestmean = TRUE, verbose = TRUE)
 #'joinout                        
 #' @export
 nearestbyday <- function(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarname, joinfromvarname, 
                          joinprefix = "closest", valuefield = "avewsp", 
-                         knearest = 5, maxdistance = NA, nearestmean = FALSE, verbose = F){
+                         knearest = 5, maxdistance = NA, nearestmean = FALSE, verbose = FALSE){
   knearest <- min(knearest, nrow(joinfrom.pts))
   knnname <- paste0(joinprefix, "knn")
   # calculate nearest neighbors using package FNN
