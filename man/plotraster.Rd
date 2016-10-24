@@ -5,8 +5,8 @@
 \title{Plot a semi-regular grid as a ggmap.}
 \usage{
 plotraster(DT, basegrid, rowvar = "hdfrow", colvar = "hdfcol",
-  longvar = "lon", latvar = "lat", id, zvar, zoom = 9, loncen = NA,
-  latcen = NA, alpha.white.backg = 0.5, aspratio = 1.05)
+  longvar = "lon", latvar = "lat", id, zvar, ggmap = TRUE, zoom = 9,
+  loncen = NA, latcen = NA, alpha.white.backg = 0.5, aspratio = 1.05)
 }
 \arguments{
 \item{DT}{data.table for a single scene to be plotted}
@@ -24,6 +24,8 @@ plotraster(DT, basegrid, rowvar = "hdfrow", colvar = "hdfcol",
 \item{id}{character of the ID of each cell of the grid - it has to be present both in DT and basegrid}
 
 \item{zvar}{character of the variable in DT the user wants to plot}
+
+\item{ggmap}{if TRUE (default) print the ggmap}
 
 \item{zoom}{integer for the zoom of the background map}
 
