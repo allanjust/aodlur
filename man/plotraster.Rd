@@ -6,7 +6,8 @@
 \usage{
 plotraster(DT, basegrid, rowvar = "hdfrow", colvar = "hdfcol",
   longvar = "lon", latvar = "lat", id, zvar, ggmap = TRUE, zoom = 9,
-  loncen = NA, latcen = NA, alpha.white.backg = 0.5, aspratio = 1.05)
+  loncen = NA, latcen = NA, alpha.layer = 0.5, alpha.white.backg = 0.5,
+  aspratio = 1.05)
 }
 \arguments{
 \item{DT}{data.table for a single scene to be plotted}
@@ -32,6 +33,8 @@ plotraster(DT, basegrid, rowvar = "hdfrow", colvar = "hdfcol",
 \item{loncen}{numeric value for the longitude of the center of the background map}
 
 \item{latcen}{numeric value for the latitude of the center of the background map}
+
+\item{alpha.layer}{numeric value for the alpha of the layer}
 
 \item{alpha.white.backg}{numeric value for the alpha of the background map}
 
