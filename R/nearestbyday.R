@@ -54,10 +54,10 @@ nearestbyday <- function(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarna
   }
   # store the indices for nearest neighbors in a long DT
   knn_out <- data.table(matrix(knn_store[["nn.index"]])) 
-  knn_out[, jointovarname := rep(rownames(jointo.pts), knearest), with = F]
-  knn_out[, joinprefix := row.names(joinfrom.pts[knn_out[, V1],]), with = F]
+  knn_out[, (jointovarname) := rep(rownames(jointo.pts), knearest)]
+  knn_out[, (joinprefix) := row.names(joinfrom.pts[knn_out[, V1],])]
   knn_out[, V1 := NULL]
-  knn_out[, knnname := rep(1:knearest, each = nrow(jointo.pts)), with = F]
+  knn_out[, (knnname) := rep(1:knearest, each = nrow(jointo.pts))]
   # drop points not within maxdistance
   knn_out <- knn_out[!is.na(get(joinprefix))]
   # use setkeyv to pass a column by name
@@ -65,10 +65,10 @@ nearestbyday <- function(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarna
   setnames(joinfrom, joinfromvarname, joinprefix)
   # if not character - coerce
   if(class(joinfrom[,joinprefix,with = F][[1]]) != "character"){
-    joinfrom[, joinprefix := as.character(joinprefix), with = F]
+    joinfrom[, (joinprefix) := as.character(joinprefix)]
   }
   # since jointovarname came through matrix rownames in jointo.pts it was coerced to character in joinfromlong above
-  jointo[, jointovarname := as.character(get(jointovarname)), with = F]
+  jointo[, (jointovarname) := as.character(get(jointovarname))]
   setkeyv(jointo, cols = c("day"))
   setkeyv(joinfrom, "day")
   # only retain days in joinfrom from jointo
@@ -86,8 +86,7 @@ nearestbyday <- function(jointo.pts, joinfrom.pts, jointo, joinfrom, jointovarna
     nobsname <- paste0(joinprefix, "nobs")
     nearestmeanname <- paste0(joinprefix, "mean")
     newfields <- c(nobsname, nearestmeanname)
-    joinfromlong[, newfields := list(.N, mean(get(valuefield))), 
-            by=c(jointovarname,"day"), with = F]
+    joinfromlong[, (newfields) := list(.N, mean(get(valuefield))), by=c(jointovarname,"day")]
   }
   # shouldn't Gforce have sped this up in data.table 1.9.2? 
   # doesn't appear faster than with options(datatable.optimize=1) #turn off Gforce
